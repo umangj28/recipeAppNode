@@ -44,10 +44,10 @@ module.exports.addRegister = (userAdd, result) => {
     }
     if (res) {
       console.log(res);
-      return result({ 'status': "success", 'status_code' : 200 , 'message': "Register data successfully" });
+      return result({ 'status': "success", 'status_code' : 200 , 'message': "Register data successfully",'success':true});
     }
     else{
-      return result({ 'status': "fali", 'status_code' : 404 , 'message': "Error in inserting" }); 
+      return result({ 'status': "fail", 'status_code' : 404 , 'message': "Error in inserting" ,'success':false}); 
     }
   });
 };
@@ -74,5 +74,18 @@ module.exports.ViewAllRegister = (result) => {
   });
 };
 
-
+module.exports.validateSuperAdmin=(userAdd,result)=>{
+  sql.query("SELECT * FROM register where email=? and password=?",[userAdd.email,userAdd.password],(err,res)=>{
+  if (err){
+    return result({'status_code':400,'message':err.sqlMessage});
+  }
+  if(res.length>0){
+    console.log(res);
+    return result({'status':'success','status_code':200,'message':"Login success",'success':true});
+  }
+  else{
+    return result({'status':'fail','status_code':404,'message':"Invalid credentials",'success':false});
+  }
+});
+};
 //   module.exports = Customer;

@@ -3,9 +3,10 @@ const mysql = require("mysql");
 var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "password",
     database: "jhankar"
   });
+
 
 // open the MySQL connection
 connection.connect(error => {
@@ -14,3 +15,5 @@ connection.connect(error => {
 });
 
 module.exports = connection;
+
+// for register database

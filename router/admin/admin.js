@@ -3,7 +3,7 @@ var router = express.Router();
 var multer = require("multer");
 var path = require("path");
 var md5 = require("md5");
-const userModel = require('../../model/admin/admin_model.js');
+const userModel = require('../../model/admin/admin_model.js'); //register page SQL queries 
 const { request, response } = require('express');
 // router.use(uploadArray);
 router.use(express.static('public'));
